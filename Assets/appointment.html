@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment - MedLink Ethiopia</title>
+    <link rel="stylesheet" href="css/MedLink.css">
+</head>
+<body>
+   
+    <main class="hero">
+        <section id="appointment" class="appointment">
+            <h2>Appointments</h2>
+            <p class="section-note">You must be logged in before a doctor or hospital can provide services.</p>
+
+            <div class="appointment-list">
+                <div class="appointment-card">
+                    <h3>Patient: Almaz F.</h3>
+                    <p>Doctor: Dr. Samuel Bekele</p>
+                    <p>Date: June 28, 2026</p>
+                    <p>Service: Cardiology consultation</p>
+                </div>
+                <div class="appointment-card">
+                    <h3>Patient: Birhan K.</h3>
+                    <p>Doctor: Dr. Hana Tesfaye</p>
+                    <p>Date: July 3, 2026</p>
+                    <p>Service: Pediatric wellness check</p>
+                </div>
+                <div class="appointment-card">
+                    <h3>Patient: Nardos M.</h3>
+                    <p>Doctor: Dr. Abel Girma</p>
+                    <p>Date: July 10, 2026</p>
+                    <p>Service: General health assessment</p>
+                </div>
+            </div>
+
+            <div id="appointmentForm" class="appointment-form">
+                <input type="text" id="patientName" placeholder="Enter patient name">
+                <select id="doctorSelect">
+                    <option value="Dr. Samuel Bekele">Dr. Samuel Bekele (Cardiology)</option>
+                    <option value="Dr. Hana Tesfaye">Dr. Hana Tesfaye (Pediatrics)</option>
+                    <option value="Dr. Abel Girma">Dr. Abel Girma (General Practitioner)</option>
+                    <option value="Dr. Firaol Adem">Dr. Firaol Adem (General Practitioner)</option>
+                    <option value="Dr. Belay Kai">Dr. Belay Kai (General Practitioner)</option>
+                </select>
+                <input type="date" id="appointmentDate" />
+                <button id="bookBtn">Book Appointment</button>
+                <p id="appointmentMessage"></p>
+            </div>
+        </section>
+        <h2>Appointment</h2>
+        <p>Appointments given to patients by doctors are listed below.</p>
+
+        <section style="margin-top: 2rem; text-align: left; max-width: 900px; margin-left: auto; margin-right: auto;">
+            <h3>Patient Appointments</h3>
+            <ul>
+                <li><strong>Patient:</strong> Almaz F. — <strong>Doctor:</strong> Dr. Samuel Bekele — <strong>Date:</strong> June 28, 2026</li>
+                <li><strong>Patient:</strong> Birhan K. — <strong>Doctor:</strong> Dr. Hana Tesfaye — <strong>Date:</strong> July 3, 2026</li>
+                <li><strong>Patient:</strong> Nardos M. — <strong>Doctor:</strong> Dr. Abel Girma — <strong>Date:</strong> July 10, 2026</li>
+            </ul>
+        </section>
+    </main>
+ 
+</body>
+</html>

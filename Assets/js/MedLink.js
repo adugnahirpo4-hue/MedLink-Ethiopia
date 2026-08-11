@@ -4,71 +4,46 @@ const searchBtn = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
 const message = document.getElementById("message");
 
-searchBtn.addEventListener("click", function () {
+if (searchBtn && searchInput && message) {
+    searchBtn.addEventListener("click", function () {
+        const searchText = searchInput.value.toLowerCase().trim();
+        const hospitals = document.querySelectorAll(".hospital-card");
 
-    const searchText =
-        searchInput.value.toLowerCase().trim();
+        let found = false;
 
-    const hospitals =
-        document.querySelectorAll(".hospital-card");
+        hospitals.forEach(function (hospital) {
+            const hospitalName = hospital.querySelector("h3").textContent.toLowerCase();
 
-    let found = false;
+            if (hospitalName.includes(searchText)) {
+                hospital.style.display = "block";
+                found = true;
+            } else {
+                hospital.style.display = "none";
+            }
+        });
 
-    hospitals.forEach(function (hospital) {
-
-        const hospitalName =
-            hospital.querySelector("h3")
-            .textContent
-            .toLowerCase();
-
-        if (hospitalName.includes(searchText)) {
-
-            hospital.style.display = "block";
-            found = true;
-
+        if (found) {
+            message.textContent = "Hospital found ✅";
         } else {
-
-            hospital.style.display = "none";
-
+            message.textContent = "No hospitals found ❌";
         }
-
     });
-
-    if (found) {
-        message.textContent = "Hospital found ✅";
-    } else {
-        message.textContent = "No hospitals found ❌";
-    }
-
-});
-
+}
 
 // ===== Appointment Booking =====
 
-const bookBtn =
-    document.getElementById("bookBtn");
+const bookBtn = document.getElementById("bookBtn");
+const patientName = document.getElementById("patientName");
+const appointmentMessage = document.getElementById("appointmentMessage");
 
-const patientName =
-    document.getElementById("patientName");
+if (bookBtn && patientName && appointmentMessage) {
+    bookBtn.addEventListener("click", function () {
+        const name = patientName.value.trim();
 
-const appointmentMessage =
-    document.getElementById("appointmentMessage");
-
-bookBtn.addEventListener("click", function(){
-
-    const name =
-        patientName.value.trim();
-
-    if(name === ""){
-
-        appointmentMessage.textContent =
-            "Please enter your name.";
-
-    }else{
-
-        appointmentMessage.textContent =
-            `Appointment booked for ${name} ✅`;
-
-    }
-
-});
+        if (name === "") {
+            appointmentMessage.textContent = "Please enter your name.";
+        } else {
+            appointmentMessage.textContent = `Appointment booked for ${name} ✅`;
+        }
+    });
+}
