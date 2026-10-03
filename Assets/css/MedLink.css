@@ -75,6 +75,7 @@ body{
     transform:translateY(-2px);
 }
 
+.page-banner,
 .cover-section{
     width:100%;
     min-height:calc(100vh - 110px);
@@ -94,6 +95,54 @@ body{
     filter:saturate(1.05) contrast(1.05);
 }
 
+.cover-motto{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    pointer-events:none;
+}
+
+.cover-motto p{
+    font-size:2rem;
+    color:white;
+    text-shadow:0 10px 25px rgba(0,0,0,0.55);
+    padding:1rem 1.5rem;
+    background:rgba(10, 14, 38, 0.45);
+    border-radius:18px;
+    max-width:720px;
+    margin:0;
+    position:relative;
+    overflow:hidden;
+    animation:mottoPulse 6s ease-in-out infinite;
+}
+
+.cover-motto p::after {
+    content:'';
+    position:absolute;
+    left:50%;
+    bottom:8px;
+    width:0;
+    height:4px;
+    background:linear-gradient(90deg, rgba(0,170,255,0.9), rgba(0,255,189,0.9));
+    border-radius:999px;
+    transform:translateX(-50%);
+    animation:mottoUnderline 3s ease-in-out infinite;
+}
+
+@keyframes mottoPulse {
+    0%, 100% { transform:scale(1); }
+    50% { transform:scale(1.02); }
+}
+
+@keyframes mottoUnderline {
+    0%, 100% { width:0; opacity:0; }
+    40% { width:50%; opacity:1; }
+    60% { width:50%; opacity:1; }
+}
+
 @keyframes coverPulse {
     0%, 100% {
         transform: scale(0.96);
@@ -105,21 +154,107 @@ body{
 
 .hero{
     text-align:center;
-    padding:80px 20px;
+    padding:60px 20px 45px;
+    min-height:calc(100vh - 110px);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:24px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(246,251,255,0.90) 40%, rgba(255,255,255,0.85) 100%);
+}
+
+.home-hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    background:
+        linear-gradient(90deg, rgba(7, 28, 48, 0.82) 0%, rgba(7, 39, 61, 0.63) 55%, rgba(7, 39, 61, 0.12) 100%),
+        url("../images/MedLink-Background.jpg") center / cover no-repeat;
+}
+
+.home-hero-content{
+    max-width:720px;
+    border:1px solid rgba(255, 255, 255, 0.24);
+    border-radius:1.5rem;
+    background:rgba(5, 30, 50, 0.38);
+    box-shadow:0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+    backdrop-filter:blur(8px);
+}
+
+.home-hero-content p{
+    max-width:650px;
+    line-height:1.75;
+    text-shadow:0 2px 12px rgba(0, 0, 0, 0.25);
 }
 
 .hero h2{
-    font-size:40px;
-    margin-bottom:20px;
+    font-size:3rem;
+    margin-bottom:0;
+    color:#0d3d75;
+    letter-spacing:1px;
+    animation:fadeInUp 0.8s ease forwards;
 }
 
-.search-box{
-    margin-top:30px;
+.hero p{
+    font-size:1.1rem;
+    max-width:900px;
+    margin:0 auto;
+    color:#33475b;
+    opacity:0.95;
 }
 
-.hero input{
-    padding:15px;
-    width:300px;
+.page-card,
+.page-section{
+    background:rgba(255,255,255,0.96);
+    border-radius:24px;
+    border:1px solid rgba(17, 85, 204, 0.08);
+    box-shadow:0 20px 50px rgba(16, 65, 102, 0.08);
+    padding:28px;
+    max-width:980px;
+    margin:0 auto;
+}
+
+.page-section h3{
+    color:#0b5ea8;
+    margin-bottom:16px;
+}
+
+.info-list{
+    list-style:none;
+    padding-left:0;
+    display:grid;
+    gap:14px;
+}
+
+.info-list li{
+    padding:15px 18px;
+    border-radius:16px;
+    background:linear-gradient(135deg, rgba(224,242,255,0.9), rgba(255,255,255,0.95));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+.info-list li strong{
+    color:#0a4d9c;
+}
+
+.login-form{
+    display:grid;
+    gap:16px;
+    max-width:100%;
+}
+
+.login-form input,
+.login-form button {
+    width:100%;
+}
+
+.login-form button{
+    margin:0;
+}
+
+@keyframes fadeInUp {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
 }
 
 button{
@@ -264,6 +399,15 @@ footer p{
 }
 
 @media (max-width: 768px) {
+    .home-hero{
+        background-position:62% center;
+    }
+
+    .home-hero-content{
+        border-radius:1.15rem;
+        background:rgba(5, 30, 50, 0.58);
+    }
+
     .site-header{
         flex-direction:column;
         align-items:flex-start;

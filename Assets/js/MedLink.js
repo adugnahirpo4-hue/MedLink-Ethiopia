@@ -1,49 +1,20 @@
-// ===== Hospital Search =====
+const loginBtn = document.getElementById("loginBtn");
+const loginMessage = document.getElementById("loginMessage");
 
-const searchBtn = document.getElementById("searchBtn");
-const searchInput = document.getElementById("searchInput");
-const message = document.getElementById("message");
+loginBtn.addEventListener("click", () => {
+    const fullName = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-if (searchBtn && searchInput && message) {
-    searchBtn.addEventListener("click", function () {
-        const searchText = searchInput.value.toLowerCase().trim();
-        const hospitals = document.querySelectorAll(".hospital-card");
+    if (fullName === "" || email === "" || password === "") {
+        loginMessage.textContent = "Please fill in all fields before logging in.";
+        loginMessage.style.color = "red";
+        return;
+    }
 
-        let found = false;
+    loginMessage.textContent = `Welcome, ${fullName}! Login successful.`;
+    loginMessage.style.color = "green";
 
-        hospitals.forEach(function (hospital) {
-            const hospitalName = hospital.querySelector("h3").textContent.toLowerCase();
-
-            if (hospitalName.includes(searchText)) {
-                hospital.style.display = "block";
-                found = true;
-            } else {
-                hospital.style.display = "none";
-            }
-        });
-
-        if (found) {
-            message.textContent = "Hospital found ✅";
-        } else {
-            message.textContent = "No hospitals found ❌";
-        }
-    });
-}
-
-// ===== Appointment Booking =====
-
-const bookBtn = document.getElementById("bookBtn");
-const patientName = document.getElementById("patientName");
-const appointmentMessage = document.getElementById("appointmentMessage");
-
-if (bookBtn && patientName && appointmentMessage) {
-    bookBtn.addEventListener("click", function () {
-        const name = patientName.value.trim();
-
-        if (name === "") {
-            appointmentMessage.textContent = "Please enter your name.";
-        } else {
-            appointmentMessage.textContent = `Appointment booked for ${name} ✅`;
-        }
-    });
-}
+    // Optional: clear the form after successful login
+    document.getElementById("loginForm").reset();
+});
